@@ -3,9 +3,9 @@ defmodule ZeroDowntimeWeb.UserControllerTest do
 
   alias ZeroDowntime.Accounts
 
-  @create_attrs %{name: "some name"}
-  @update_attrs %{name: "some updated name"}
-  @invalid_attrs %{name: nil}
+  @create_attrs %{full_name: "some name"}
+  @update_attrs %{full_name: "some updated name"}
+  @invalid_attrs %{full_name: nil}
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
@@ -75,6 +75,7 @@ defmodule ZeroDowntimeWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end

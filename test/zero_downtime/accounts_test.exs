@@ -6,9 +6,9 @@ defmodule ZeroDowntime.AccountsTest do
   describe "users" do
     alias ZeroDowntime.Accounts.User
 
-    @valid_attrs %{name: "some name"}
-    @update_attrs %{name: "some updated name"}
-    @invalid_attrs %{name: nil}
+    @valid_attrs %{full_name: "some name"}
+    @update_attrs %{full_name: "some updated name"}
+    @invalid_attrs %{full_name: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,7 +31,7 @@ defmodule ZeroDowntime.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.name == "some name"
+      assert user.full_name == "some name"
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -41,7 +41,7 @@ defmodule ZeroDowntime.AccountsTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.name == "some updated name"
+      assert user.full_name == "some updated name"
     end
 
     test "update_user/2 with invalid data returns error changeset" do

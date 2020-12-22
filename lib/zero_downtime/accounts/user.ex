@@ -3,7 +3,6 @@ defmodule ZeroDowntime.Accounts.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :name, :string, virtual: true
     field :full_name, :string
 
     timestamps()
